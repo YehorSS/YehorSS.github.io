@@ -115,6 +115,7 @@ const en: Record<string, string> = {
   'comms.telegram': 'Telegram',
   'comms.github': 'Source code',
   'nav.label': 'Decks',
+  'lang.label': 'Language',
 };
 
 const uk: Record<string, string> = {
@@ -183,6 +184,7 @@ const uk: Record<string, string> = {
   'comms.telegram': 'Telegram',
   'comms.github': 'Код',
   'nav.label': 'Палуби',
+  'lang.label': 'Мова',
 };
 
 export const DICT: Record<Lang, Record<string, string>> = { en, uk };

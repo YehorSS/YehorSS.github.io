@@ -19,6 +19,8 @@ export function runBoot(root: HTMLElement, lang: Lang): Promise<void> {
     root.setAttribute('role', 'button');
     root.setAttribute('tabindex', '0');
     root.setAttribute('aria-label', t(lang, 'boot.skip'));
+    const behind = [...document.querySelectorAll<HTMLElement>('header, main, .gauge')];
+    behind.forEach(el => el.setAttribute('inert', ''));
     root.hidden = false;
     root.focus({ preventScroll: true });
     const cv = root.querySelector('canvas')!;
@@ -32,6 +34,7 @@ export function runBoot(root: HTMLElement, lang: Lang): Promise<void> {
       alive = false;
       timers.forEach(clearTimeout);
       markBooted();
+      behind.forEach(el => el.removeAttribute('inert'));
       root.classList.add('gone');
       setTimeout(() => { root.hidden = true; root.innerHTML = ''; resolve(); }, 420);
     };

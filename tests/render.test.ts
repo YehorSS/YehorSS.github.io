@@ -67,3 +67,13 @@ describe('comms', () => {
     expect(el.querySelectorAll('.channel.live button.copy')).toHaveLength(3);
   });
 });
+
+import { applyLang } from '../src/i18n';
+
+describe('bridge name', () => {
+  it('keeps a space between first and last name', () => {
+    renderBridge(el);
+    applyLang(el, 'en');
+    expect(el.querySelector('h1')!.textContent).toBe('Yehor Kudinchykov');
+  });
+});

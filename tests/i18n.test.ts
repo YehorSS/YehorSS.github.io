@@ -45,3 +45,16 @@ describe('stored language', () => {
     expect(readStoredLang()).toBe('uk');
   });
 });
+
+import { applyLang } from '../src/i18n';
+
+describe('applyLang', () => {
+  it('translates aria labels', () => {
+    const root = document.createElement('div');
+    root.innerHTML = '<nav data-i18n-aria="nav.label"></nav><div data-i18n-aria="gauge"></div><div data-i18n-aria="lang.label"></div>';
+    applyLang(root, 'uk');
+    expect(root.querySelector('nav')!.getAttribute('aria-label')).toBe('Палуби');
+    expect(root.querySelector('[data-i18n-aria="gauge"]')!.getAttribute('aria-label')).toBe('Цілісність архіву');
+    expect(root.querySelector('[data-i18n-aria="lang.label"]')!.getAttribute('aria-label')).toBe('Мова');
+  });
+});

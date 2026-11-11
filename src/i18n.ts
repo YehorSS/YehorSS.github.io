@@ -14,6 +14,7 @@ export function t(lang: Lang, key: string): string {
 
 export function applyLang(root: ParentNode, lang: Lang): void {
   root.querySelectorAll<HTMLElement>('[data-i18n]').forEach(el => { el.textContent = t(lang, el.dataset.i18n!); });
+  root.querySelectorAll<HTMLElement>('[data-i18n-aria]').forEach(el => { el.setAttribute('aria-label', t(lang, el.dataset.i18nAria!)); });
   root.querySelectorAll<HTMLElement>('[data-i18n-html]').forEach(el => { el.innerHTML = t(lang, el.dataset.i18nHtml!); });
   document.documentElement.lang = lang;
   document.title = t(lang, 'meta.title');
