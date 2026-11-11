@@ -18,7 +18,7 @@
 }
 
 /* one-off band sweep when a deck header enters view */
-.deck { position: relative; }
+.deck { position: relative; overflow: hidden; }
 .deck.deck-in::before { content: ""; position: absolute; left: 0; right: 0; bottom: 4px; height: 18px; pointer-events: none; background: linear-gradient(90deg, transparent, rgb(200 255 46 / .35) 40%, rgb(255 46 122 / .45) 60%, transparent); mix-blend-mode: screen; animation: sweep .45s steps(6) 1 forwards; }
 .deck.deck-in .no { animation: chroma .45s steps(3) 1; }
 @keyframes sweep { from { transform: translateX(-100%); opacity: 1; } to { transform: translateX(100%); opacity: 0; } }

@@ -30,7 +30,7 @@
 /* PARTIAL: torn corner, shifted word, faint scan lines */
 .rec.damaged { clip-path: polygon(0 0, 100% 0, 100% 78%, 96% 82%, 98% 88%, 93% 100%, 0 100%); }
 .rec.damaged .body { background: repeating-linear-gradient(0deg, transparent 0 3px, rgb(13 14 11 / .035) 3px 4px); }
-.rec .shift { display: inline-block; transform: translateX(10px); color: var(--breach); }
+.rec .shift { display: inline-block; max-width: calc(100% - 10px); transform: translateX(10px); color: var(--breach); }
 .rec.damaged .reg.b { display: none; }
 
 /* CORRUPTED: offset bands across the frame, two torn corners; text and link stay clean */
