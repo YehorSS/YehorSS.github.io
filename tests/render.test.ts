@@ -74,7 +74,7 @@ describe('bridge headline', () => {
   it('leads with development and keeps the name in the crew tag', () => {
     renderBridge(el);
     applyLang(el, 'en');
-    expect(el.querySelector('h1')!.textContent).toBe('Software development');
+    expect(el.querySelector('h1')!.textContent).toBe('Software/Web development');
     expect(el.querySelector('.ship')!.textContent).toContain('Yehor Kudinchykov');
     expect(el.querySelector('.role')!.textContent).toMatch(/desktop apps.*websites.*game tools.*mods/i);
   });
@@ -82,7 +82,18 @@ describe('bridge headline', () => {
   it('reads the same way in Ukrainian', () => {
     renderBridge(el);
     applyLang(el, 'uk');
-    expect(el.querySelector('h1')!.textContent).toBe('Розробка програм');
+    expect(el.querySelector('h1')!.textContent).toBe('Розробка програм/сайтів');
     expect(el.querySelector('.ship')!.textContent).toContain('Єгор Кудінчиков');
+  });
+});
+
+import { fitHeadline } from '../src/render';
+
+describe('fitHeadline', () => {
+  it('sizes the headline by its longest line', () => {
+    renderBridge(el);
+    applyLang(el, 'uk');
+    fitHeadline(el.querySelector('h1')!);
+    expect(el.querySelector<HTMLElement>('h1')!.style.getPropertyValue('--len')).toBe('14');
   });
 });

@@ -111,3 +111,9 @@ export function renderComms(el: HTMLElement): void {
     setTimeout(() => { btn.textContent = t(document.documentElement.lang as Lang, 'comms.copy'); }, 1500);
   }));
 }
+
+/** Sizes the two-line headline so its longest line fills the width in any language. */
+export function fitHeadline(h1: HTMLElement): void {
+  const lines = [h1.firstElementChild?.textContent ?? '', h1.querySelector('.l2')?.textContent ?? ''];
+  h1.style.setProperty('--len', String(Math.max(...lines.map(l => l.length))));
+}

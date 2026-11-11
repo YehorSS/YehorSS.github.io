@@ -58,7 +58,7 @@ main { position: relative; z-index: 1; padding-bottom: 64px; }
 .bridge .ship { grid-column: 1 / -1; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; color: var(--mist); }
 .bridge .ship .tag { background: var(--acid); color: var(--ink); padding: 3px 8px; font-weight: 600; }
 .bridge .ship .who { color: var(--paper); font-weight: 600; }
-h1 { grid-column: 1 / -1; margin: 0; font-family: var(--f-display); font-weight: 900; text-transform: uppercase; line-height: .86; letter-spacing: -.02em; font-size: clamp(26px, calc(100cqi / 10.8), 134px); }
+h1 { grid-column: 1 / -1; margin: 0; font-family: var(--f-display); font-weight: 900; text-transform: uppercase; line-height: .86; letter-spacing: -.02em; font-size: clamp(22px, calc(100cqi / (var(--len, 11) * 0.98)), 134px); }
 h1 .l2 { display: block; color: transparent; -webkit-text-stroke: 1.5px var(--paper); }
 .role { grid-column: 1 / 7; font-size: clamp(18px, 2vw, 22px); line-height: 1.35; max-width: 34ch; margin: 0; }
 .role em { font-style: normal; color: var(--acid); }

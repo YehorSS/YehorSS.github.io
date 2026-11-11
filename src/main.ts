@@ -5,7 +5,7 @@ import './styles/systems.css';
 import './styles/effects.css';
 import type { Lang } from './content';
 import { applyLang, detectLang, readStoredLang, storeLang } from './i18n';
-import { renderArchive, renderBridge, renderComms, renderEngineering } from './render';
+import { fitHeadline, renderArchive, renderBridge, renderComms, renderEngineering } from './render';
 import { mountGauge, mountGaugeDrag } from './gauge';
 import { renderTemp, mountTelemetry } from './telemetry';
 import { mountGlitch } from './glitch';
@@ -24,6 +24,7 @@ function setLang(l: Lang): void {
   $('lang-en').setAttribute('aria-pressed', String(l === 'en'));
   $('lang-uk').setAttribute('aria-pressed', String(l === 'uk'));
   renderTemp();
+  fitHeadline(document.querySelector('h1')!);
 }
 
 const lang = detectLang(navigator.language, readStoredLang());
