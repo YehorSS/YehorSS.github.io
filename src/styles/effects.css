@@ -1,0 +1,30 @@
+/* boot */
+#boot { position: fixed; inset: 0; z-index: 50; background: var(--void); display: grid; place-items: center; cursor: pointer; transition: opacity .4s; }
+#boot canvas { position: absolute; inset: 0; width: 100%; height: 100%; image-rendering: pixelated; }
+#boot .term { position: relative; width: min(560px, calc(100% - 32px)); display: grid; gap: 6px; }
+#boot .line { color: var(--mist); white-space: pre-wrap; }
+#boot .line.ok { color: var(--acid); }
+#boot .line.bad { color: var(--breach); }
+#boot .skip { position: absolute; bottom: max(24px, env(safe-area-inset-bottom, 0px)); left: 0; right: 0; text-align: center; color: var(--mist); }
+#boot.gone { opacity: 0; pointer-events: none; }
+
+/* random jolt on headings */
+.glitch { animation: jolt .32s steps(2) 1; }
+@keyframes jolt {
+  0% { transform: translateX(0); text-shadow: none; }
+  30% { transform: translateX(-6px); text-shadow: 6px 0 var(--breach), -4px 0 var(--acid); }
+  60% { transform: translateX(4px); clip-path: inset(20% 0 35% 0); }
+  100% { transform: none; text-shadow: none; clip-path: none; }
+}
+
+/* one-off band sweep when a deck header enters view */
+.deck { position: relative; }
+.deck.deck-in::before { content: ""; position: absolute; left: 0; right: 0; bottom: 4px; height: 18px; pointer-events: none; background: linear-gradient(90deg, transparent, rgb(200 255 46 / .35) 40%, rgb(255 46 122 / .45) 60%, transparent); mix-blend-mode: screen; animation: sweep .45s steps(6) 1 forwards; }
+.deck.deck-in .no { animation: chroma .45s steps(3) 1; }
+@keyframes sweep { from { transform: translateX(-100%); opacity: 1; } to { transform: translateX(100%); opacity: 0; } }
+@keyframes chroma { 0%, 100% { text-shadow: none; } 50% { text-shadow: 3px 0 var(--breach), -3px 0 var(--paper); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .glitch, .deck.deck-in::before, .deck.deck-in .no { animation: none; }
+  #boot { transition: none; }
+}
