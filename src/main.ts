@@ -6,7 +6,7 @@ import './styles/effects.css';
 import type { Lang } from './content';
 import { applyLang, detectLang, readStoredLang, storeLang } from './i18n';
 import { renderArchive, renderBridge, renderComms, renderEngineering } from './render';
-import { mountGauge } from './gauge';
+import { mountGauge, mountGaugeDrag } from './gauge';
 import { renderTemp, mountTelemetry } from './telemetry';
 import { mountGlitch } from './glitch';
 import { runBoot, shouldBoot } from './boot';
@@ -32,6 +32,7 @@ $('lang-en').addEventListener('click', () => { setLang('en'); storeLang('en'); }
 $('lang-uk').addEventListener('click', () => { setLang('uk'); storeLang('uk'); });
 
 mountGauge($('gauge-fill'), $('gauge-value'));
+mountGaugeDrag(document.querySelector<HTMLElement>('.gauge .bar')!);
 mountTelemetry(reduced);
 mountGlitch(reduced);
 if (shouldBoot(reduced)) void runBoot($('boot'), lang);

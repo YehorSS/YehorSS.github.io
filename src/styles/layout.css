@@ -26,7 +26,10 @@
 
 /* integrity gauge */
 .gauge { position: fixed; right: max(10px, env(safe-area-inset-right, 0px)); top: 50%; transform: translateY(-50%); z-index: 15; display: flex; flex-direction: column; align-items: center; gap: 8px; }
-.gauge .bar { width: 6px; height: 38vh; background: var(--guide); position: relative; }
+.gauge .bar { width: 6px; height: 38vh; background: var(--guide); position: relative; cursor: ns-resize; touch-action: none; }
+/* wider invisible hit area around the thin bar */
+.gauge .bar::before { content: ""; position: absolute; inset: -6px -12px; }
+.gauge .bar:hover { background: color-mix(in srgb, var(--guide) 70%, var(--mist)); }
 .gauge .fill { position: absolute; left: 0; right: 0; bottom: 0; height: 98%; background: var(--acid); transition: height .2s linear, background-color .3s; }
 .gauge .fill[data-state="breach"] { background: var(--breach); }
 .gauge .v { writing-mode: vertical-rl; transform: rotate(180deg); color: var(--mist); }
