@@ -1,0 +1,55 @@
+.records { display: grid; gap: 48px; padding-block: 16px 40px; }
+.rec { display: grid; grid-template-columns: 220px minmax(0, 1fr); background: var(--paper); color: var(--ink); position: relative; }
+.rec .side { border-right: 1px solid var(--ink); padding: 18px; display: flex; flex-direction: column; gap: 14px; justify-content: space-between; min-width: 0; }
+.rec .side .k { color: var(--ink-soft); }
+.rec .side .val { font-family: var(--f-mono); font-size: 13px; font-weight: 600; }
+.status { display: inline-block; padding: 3px 8px; font-weight: 600; }
+.status.ok { background: var(--ink); color: var(--acid); }
+.status.part { background: var(--breach); color: var(--ink); }
+.status.bad { background: var(--breach); color: var(--paper); outline: 2px solid var(--ink); }
+.barcode { width: 100%; height: 46px; display: block; fill: var(--ink); }
+.barcode .plate { fill: var(--breach); }
+.rec .body { padding: 22px 26px 26px; display: grid; gap: 14px; min-width: 0; }
+.rec .top { display: flex; justify-content: space-between; gap: 6px 16px; flex-wrap: wrap; color: var(--ink-soft); }
+.rec h2 { margin: 0; font-family: var(--f-display); font-weight: 800; text-transform: uppercase; font-size: clamp(26px, 4.4vw, 60px); line-height: .95; letter-spacing: -.015em; overflow-wrap: anywhere; }
+.rec p { margin: 0; max-width: 62ch; font-size: 17px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chips span { border: 1px solid var(--ink); padding: 3px 8px; }
+.rec .foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; border-top: 1px dashed var(--ink-soft); padding-top: 14px; }
+.rec .foot a { font-family: var(--f-mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; background: var(--ink); color: var(--paper); padding: 10px 14px; }
+.rec .foot a:hover, .rec .foot a:focus-visible { background: var(--acid); color: var(--ink); }
+.rec .reg { position: absolute; width: 14px; height: 14px; border: 1px solid var(--ink); }
+.rec .reg::before, .rec .reg::after { content: ""; position: absolute; background: var(--ink); }
+.rec .reg::before { left: 50%; top: -5px; bottom: -5px; width: 1px; }
+.rec .reg::after { top: 50%; left: -5px; right: -5px; height: 1px; }
+.rec .reg.a { top: 8px; right: 8px; }
+.rec .reg.b { bottom: 8px; right: 8px; }
+.redact { background: var(--ink); color: var(--ink); user-select: none; }
+.breach-note { position: absolute; left: 236px; bottom: 0; background: var(--breach); color: var(--ink); padding: 4px 10px; font-weight: 600; z-index: 2; }
+
+/* PARTIAL: torn corner, shifted word, faint scan lines */
+.rec.damaged { clip-path: polygon(0 0, 100% 0, 100% 78%, 96% 82%, 98% 88%, 93% 100%, 0 100%); }
+.rec.damaged .body { background: repeating-linear-gradient(0deg, transparent 0 3px, rgb(13 14 11 / .035) 3px 4px); }
+.rec .shift { display: inline-block; transform: translateX(10px); color: var(--breach); }
+.rec.damaged .reg.b { display: none; }
+
+/* CORRUPTED: offset bands across the frame, two torn corners; text and link stay clean */
+.rec.corrupted { clip-path: polygon(0 0, 62% 0, 66% 3%, 71% 0, 100% 0, 100% 70%, 97% 76%, 100% 81%, 95% 100%, 0 100%, 0 40%, 2% 36%, 0 31%); }
+.rec.corrupted::before, .rec.corrupted::after { content: ""; position: absolute; pointer-events: none; z-index: 1; }
+/* bands stay in the side column and on the top edge, never over the record's text */
+.rec.corrupted::before { left: 0; width: 220px; top: 22%; height: 9px; background: var(--paper); transform: translateX(-8px); box-shadow: 0 46px 0 -2px var(--breach), 0 0 0 1px var(--ink); opacity: .85; }
+.rec.corrupted::after { left: 0; right: 0; top: 0; height: 6px; background: repeating-linear-gradient(90deg, var(--breach) 0 14px, transparent 14px 22px); transform: translateX(6px); }
+.rec.corrupted .side { background: repeating-linear-gradient(0deg, transparent 0 2px, rgb(255 46 122 / .06) 2px 3px); }
+.rec.corrupted .reg { display: none; }
+.rec.corrupted .chips span:nth-child(even) { border-style: dashed; }
+
+@media (max-width: 760px) {
+  .rec { grid-template-columns: 1fr; }
+  .rec .side { border-right: 0; border-bottom: 1px solid var(--ink); display: grid; grid-template-columns: 1fr 1fr; }
+  .rec .side .bc { grid-column: 1 / -1; }
+  .rec .body { padding: 18px; }
+  .breach-note { left: 0; right: 0; bottom: 0; }
+  .rec .shift { transform: translateX(6px); }
+  .rec.corrupted::before { width: 50%; top: 12%; }
+  .rec .foot { padding-bottom: 22px; }
+}
