@@ -42,7 +42,7 @@ describe('archive', () => {
 describe('bridge', () => {
   it('has the name and a link to the archive', () => {
     renderBridge(el);
-    expect(el.querySelector('h1 [data-i18n="bridge.first"]')).not.toBeNull();
+    expect(el.querySelector('h1 [data-i18n="bridge.l1"]')).not.toBeNull();
     expect(el.querySelector('a[href="#deck-archive"]')).not.toBeNull();
   });
 });
@@ -70,10 +70,19 @@ describe('comms', () => {
 
 import { applyLang } from '../src/i18n';
 
-describe('bridge name', () => {
-  it('keeps a space between first and last name', () => {
+describe('bridge headline', () => {
+  it('leads with development and keeps the name in the crew tag', () => {
     renderBridge(el);
     applyLang(el, 'en');
-    expect(el.querySelector('h1')!.textContent).toBe('Yehor Kudinchykov');
+    expect(el.querySelector('h1')!.textContent).toBe('Software development');
+    expect(el.querySelector('.ship')!.textContent).toContain('Yehor Kudinchykov');
+    expect(el.querySelector('.role')!.textContent).toMatch(/desktop apps.*websites.*game tools.*mods/i);
+  });
+
+  it('reads the same way in Ukrainian', () => {
+    renderBridge(el);
+    applyLang(el, 'uk');
+    expect(el.querySelector('h1')!.textContent).toBe('Розробка програм');
+    expect(el.querySelector('.ship')!.textContent).toContain('Єгор Кудінчиков');
   });
 });

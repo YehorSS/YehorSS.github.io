@@ -14,8 +14,8 @@ function deckHead(no: string, key: string, right: string): string {
 export function renderBridge(el: HTMLElement): void {
   el.innerHTML = `${deckHead('01', 'deck.bridge', 'TAU-FIELD 14.07 / −3.91')}
   <div class="bridge">
-    <div class="ship mono">${tr('bridge.crew', 'span', 'tag')}<span>ID 0047-YK</span></div>
-    <h1 class="jolt">${tr('bridge.first')} <span class="l2" data-i18n="bridge.last"></span></h1>
+    <div class="ship mono">${tr('bridge.crew', 'span', 'tag')}${tr('bridge.name', 'span', 'who')}<span>ID 0047-YK</span></div>
+    <h1 class="jolt">${tr('bridge.l1')} <span class="l2" data-i18n="bridge.l2"></span></h1>
     <p class="role" data-i18n-html="bridge.role"></p>
     <dl class="spec mono">
       ${tr('spec.core', 'dt')}<dd>Java · C++ · TypeScript</dd>
