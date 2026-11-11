@@ -1,5 +1,8 @@
 import { CONTACTS, RECORDS, SKILLS, type ArchiveRecord } from './content';
 import { barcodeSvg } from './barcode';
+import { copyText } from './copy';
+import { t } from './i18n';
+import type { Lang } from './content';
 
 const esc = (s: string) => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
 const tr = (key: string, tag = 'span', cls = '') => `<${tag}${cls ? ` class="${cls}"` : ''} data-i18n="${key}"></${tag}>`;
@@ -71,4 +74,40 @@ export function renderArchive(el: HTMLElement): void {
   <div class="records">${RECORDS.map(record).join('')}</div>`;
 }
 
-export { CONTACTS, SKILLS };
+export function renderEngineering(el: HTMLElement): void {
+  const sys = SKILLS.map((s, i) => `<div class="sys">
+      <div class="sys-head mono"><span>SYS-0${i + 1}</span><span class="on">● <span data-i18n="eng.online"></span></span></div>
+      <h3 data-i18n="eng.${s.key}"></h3>
+      <div class="load" style="--load:${s.load}" aria-hidden="true"><i></i></div>
+      <ul class="mono">${s.items.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
+    </div>`).join('');
+  el.innerHTML = `${deckHead('03', 'deck.engineering', `${SKILLS.length} SYS`)}<div class="systems">${sys}</div>`;
+}
+
+const OFFLINE = ['CH-01 DEEP RELAY', 'CH-02 COLONY BEACON', 'CH-06 CREW BAND'];
+
+export function renderComms(el: HTMLElement): void {
+  const dead = (code: string) => `<li class="channel dead mono"><span class="code">${code}</span><span data-i18n="comms.offline"></span></li>`;
+  const live = CONTACTS.map((c, i) => `<li class="channel live">
+      <span class="code mono">CH-0${i + 3}</span>
+      <span class="kind mono" data-i18n="comms.${c.key}"></span>
+      <a class="handle" href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.label)} ↗</a>
+      <code class="raw" hidden>${esc(c.copy)}</code>
+      <button type="button" class="copy mono" data-copy="${esc(c.copy)}" data-i18n="comms.copy"></button>
+    </li>`).join('');
+  el.innerHTML = `${deckHead('04', 'deck.comms', '3 / 6')}
+  <div class="comms">
+    <p class="lead" data-i18n="comms.lead"></p>
+    <ul class="channels">${dead(OFFLINE[0])}${dead(OFFLINE[1])}${live}${dead(OFFLINE[2])}</ul>
+    <p class="sent mono"><span class="dot"></span><span data-i18n="comms.sent"></span></p>
+  </div>`;
+  el.querySelectorAll<HTMLButtonElement>('button.copy').forEach(btn => btn.addEventListener('click', async () => {
+    const raw = btn.parentElement!.querySelector<HTMLElement>('.raw')!;
+    raw.hidden = false;
+    const res = await copyText(btn.dataset.copy!, raw);
+    const lang = document.documentElement.lang as Lang;
+    btn.textContent = t(lang, res === 'copied' ? 'comms.copied' : 'comms.selected');
+    if (res === 'copied') raw.hidden = true;
+    setTimeout(() => { btn.textContent = t(document.documentElement.lang as Lang, 'comms.copy'); }, 1500);
+  }));
+}

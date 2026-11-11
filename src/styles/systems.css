@@ -1,0 +1,42 @@
+/* engineering: systems as readouts */
+.systems { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 16px; padding-block: 16px 24px; }
+.sys { background: var(--hull); border: 1px solid var(--guide); padding: 18px; display: grid; gap: 12px; align-content: start; min-width: 0; }
+.sys-head { display: flex; justify-content: space-between; color: var(--mist); }
+.sys-head .on { color: var(--acid); }
+.sys h3 { margin: 0; font-family: var(--f-display); font-weight: 800; text-transform: uppercase; font-size: 18px; line-height: 1.1; overflow-wrap: break-word; hyphens: auto; }
+.load { height: 6px; background: var(--guide); position: relative; overflow: hidden; }
+.load i { position: absolute; inset: 0; transform-origin: left; transform: scaleX(var(--load)); background: repeating-linear-gradient(90deg, var(--acid) 0 6px, transparent 6px 8px); }
+.sys ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; color: var(--paper); text-transform: none; letter-spacing: .02em; font-size: 12px; }
+.sys li::before { content: "› "; color: var(--mist); }
+/* systems further down lose power */
+.sys:nth-child(4) { opacity: .88; }
+.sys:nth-child(5) { opacity: .74; border-style: dashed; }
+.sys:nth-child(5) .sys-head .on { color: var(--breach); }
+
+/* comms: one channel still open */
+.comms { display: grid; gap: 24px; padding-block: 16px 24px; }
+.comms .lead { margin: 0; font-family: var(--f-display); font-weight: 500; font-size: clamp(20px, 2.6vw, 32px); line-height: 1.2; max-width: 30ch; text-wrap: balance; }
+.channels { list-style: none; margin: 0; padding: 0; display: grid; border-top: 1px solid var(--guide); }
+.channel { display: grid; grid-template-columns: 180px 1fr; gap: 8px 16px; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--guide); }
+.channel.dead { color: rgb(138 141 124 / .4); }
+.channel .code { white-space: nowrap; }
+.channel.dead span:last-child { color: var(--breach); opacity: .55; }
+.channel.live { grid-template-columns: 180px 200px minmax(0, 1fr) auto; }
+.channel.live .code { color: var(--acid); }
+.channel.live .kind { color: var(--mist); }
+.handle { font-family: var(--f-display); font-weight: 800; font-size: clamp(18px, 2.4vw, 28px); text-transform: uppercase; text-decoration: none; overflow-wrap: anywhere; min-width: 0; }
+.handle:hover, .handle:focus-visible { color: var(--acid); }
+.raw { grid-column: 3 / 4; font-family: var(--f-mono); font-size: 12px; color: var(--paper); background: var(--hull); padding: 4px 8px; overflow-wrap: anywhere; }
+.copy { background: none; border: 1px solid var(--mist); color: var(--mist); padding: 8px 12px; cursor: pointer; }
+.copy:hover, .copy:focus-visible { border-color: var(--acid); color: var(--acid); }
+.sent { display: flex; align-items: center; gap: 10px; color: var(--acid); margin: 0; }
+.sent .dot { width: 8px; height: 8px; background: var(--acid); animation: blink 1.4s steps(2) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+@media (max-width: 760px) {
+  .channel, .channel.live { grid-template-columns: auto minmax(0, 1fr); }
+  .channel.live .kind { grid-column: 2; }
+  .channel.live .handle { grid-column: 1 / -1; }
+  .channel.live .raw { grid-column: 1 / -1; }
+  .channel.live .copy { grid-column: 1 / -1; justify-self: start; }
+}
+@media (prefers-reduced-motion: reduce) { .sent .dot { animation: none; } }

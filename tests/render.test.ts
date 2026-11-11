@@ -46,3 +46,24 @@ describe('bridge', () => {
     expect(el.querySelector('a[href="#deck-archive"]')).not.toBeNull();
   });
 });
+
+import { renderComms, renderEngineering } from '../src/render';
+import { FREELANCEHUNT_URL } from '../src/content';
+
+describe('engineering', () => {
+  it('shows five systems and no percentages', () => {
+    renderEngineering(el);
+    expect(el.querySelectorAll('.sys')).toHaveLength(5);
+    expect(el.innerHTML).not.toContain('%');
+  });
+});
+
+describe('comms', () => {
+  it('opens exactly the three live channels and no mail', () => {
+    renderComms(el);
+    const hrefs = [...el.querySelectorAll('.channel.live a')].map(a => a.getAttribute('href'));
+    expect(hrefs).toEqual([FREELANCEHUNT_URL, 'https://t.me/kujira88', 'https://github.com/YehorSS']);
+    expect(el.innerHTML).not.toContain('mailto:');
+    expect(el.querySelectorAll('.channel.live button.copy')).toHaveLength(3);
+  });
+});
