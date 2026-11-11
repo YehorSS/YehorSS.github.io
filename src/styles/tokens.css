@@ -1,0 +1,27 @@
+/* One deliberate dark look: hull interior, printed manifests, acid system light, magenta for damage. */
+:root {
+  --void: #0a0b09;
+  --hull: #15170f;
+  --paper: #e7e5dc;
+  --ink: #0d0e0b;
+  --ink-soft: #55584a;
+  --mist: #8a8d7c;
+  --guide: #2a2d22;
+  --acid: #c8ff2e;
+  --breach: #ff2e7a;
+  --f-display: "Unbounded", "Arial Black", Impact, sans-serif;
+  --f-body: "Inter Tight", "Segoe UI", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", Consolas, "Courier New", monospace;
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+body { margin: 0; background: var(--void); color: var(--paper); font-family: var(--f-body); font-size: 16px; line-height: 1.5; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--void); }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--acid); outline-offset: 3px; }
+.wrap { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); max-width: 1320px; margin: 0 auto; }
+.mono { font-family: var(--f-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

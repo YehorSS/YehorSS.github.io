@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Yehor Kudinchykov — game tools, mods and desktop apps</title>
+  <meta name="description" content="Portfolio of Yehor Kudinchykov: game tools, mods, desktop apps and websites. Java, C++, TypeScript.">
+  <meta name="theme-color" content="#0a0b09">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Yehor Kudinchykov — GEKKO-MO archive">
+  <meta property="og:description" content="Game tools, mods, desktop apps and websites. Java, C++, TypeScript.">
+  <meta property="og:url" content="https://yehorss.github.io/">
+  <meta property="og:image" content="https://yehorss.github.io/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;800;900&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+</head>
+<body>
+  <div id="boot" hidden></div>
+
+  <div class="guides" aria-hidden="true"><div class="wrap"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
+
+  <header class="rail">
+    <div class="wrap mono">
+      <span class="id">GEKKO-MO</span>
+      <span class="t"><span data-i18n="rail.drift">Drift</span> <b id="drift">4 812</b> <span data-i18n="rail.days">d</span></span>
+      <span class="t hide-sm"><span data-i18n="rail.hull">Hull</span> <b id="temp">−41.2</b> °C</span>
+      <span class="t warn hide-sm"><span data-i18n="rail.signal">Signal</span> <b data-i18n="rail.lost">LOST</b></span>
+      <nav class="decknav" aria-label="Decks" data-i18n-aria="nav.label">
+        <a href="#deck-bridge">01</a><a href="#deck-archive">02</a><a href="#deck-engineering">03</a><a href="#deck-comms">04</a>
+      </nav>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" id="lang-en" aria-pressed="true">EN</button>
+        <button type="button" id="lang-uk" aria-pressed="false">UA</button>
+      </div>
+    </div>
+  </header>
+
+  <aside class="gauge mono" aria-label="Archive integrity">
+    <div class="bar"><div class="fill" id="gauge-fill"></div></div>
+    <div class="v"><span data-i18n="gauge">Archive integrity</span> <b id="gauge-value">98%</b></div>
+  </aside>
+
+  <main class="wrap">
+    <section id="deck-bridge"></section>
+    <section id="deck-archive"></section>
+    <section id="deck-engineering"></section>
+    <section id="deck-comms"></section>
+  </main>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
