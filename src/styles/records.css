@@ -16,6 +16,7 @@
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .chips span { border: 1px solid var(--ink); padding: 3px 8px; }
 .rec .foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; border-top: 1px dashed var(--ink-soft); padding-top: 14px; }
+.rec .foot .links { display: flex; gap: 8px; flex-wrap: wrap; }
 .rec .foot a { font-family: var(--f-mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; background: var(--ink); color: var(--paper); padding: 10px 14px; }
 .rec .foot a:hover, .rec .foot a:focus-visible { background: var(--acid); color: var(--ink); }
 .rec .reg { position: absolute; width: 14px; height: 14px; border: 1px solid var(--ink); }

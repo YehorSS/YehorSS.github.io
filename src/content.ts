@@ -8,6 +8,7 @@ export interface ArchiveRecord {
   serial: string;
   seed: string;
   repo: string;
+  site?: string;
   stack: string;
   chips: string[];
   title: string;
@@ -27,12 +28,14 @@ export const FREELANCEHUNT_URL = 'https://freelancehunt.com/freelancer/kujira88.
 const GH = 'https://github.com/YehorSS';
 
 export const RECORDS: ArchiveRecord[] = [
-  { id: 'REC-001', status: 'INTACT', recovered: '2026-11-11', serial: '0047-YK-001-VY', seed: 'vasyan', repo: `${GH}/vasyan-lang`, stack: 'C++17 · CMake', chips: ['Lexer', 'Parser', 'Bytecode', 'Validator', 'VM'], title: 'VasyanLang', key: 'vasyan' },
-  { id: 'REC-002', status: 'INTACT', recovered: '2026-10-24', serial: '0047-YK-002-TS', seed: 'tsm', repo: `${GH}/TSM`, stack: 'Tauri 2 · React · TypeScript', chips: ['Tauri', 'React', 'Carrier APIs', 'EN / RU / IT'], title: 'TSM', key: 'tsm' },
-  { id: 'REC-003', status: 'INTACT', recovered: '2026-11-08', serial: '0047-YK-003-CM', seed: 'controller', repo: `${GH}/controller-manager`, stack: 'C++ · WinAPI · WebView2', chips: ['DualSense', 'DualShock 4', 'XInput', 'HID'], title: 'Controller Manager', key: 'controller' },
-  { id: 'REC-004', status: 'PARTIAL', recovered: '2026-10-19', serial: '0047-YK-004-H4', seed: 'hoi4', repo: `${GH}/hoi4-external-advisor`, stack: 'C++20 · WinAPI · ImGui · DX11', chips: ['Memory reading', 'Dijkstra', 'Overlay', 'memscan'], title: 'HoI4 External Advisor', key: 'hoi4' },
-  { id: 'REC-005', status: 'PARTIAL', recovered: '2026-10-02', serial: '0047-YK-005-DS', seed: 'crit', repo: `${GH}/DragonSwordCritCombatModifacator`, stack: 'Node.js · JavaScript', chips: ['Unreal archives', 'Mod build', 'Sliders'], title: 'Crit & Combat', key: 'crit' },
-  { id: 'REC-006', status: 'CORRUPTED', recovered: '2026-09-14', serial: '0047-YK-006-DB', seed: 'damage', repo: `${GH}/DamageBuildAnalitics`, stack: 'JavaScript', chips: ['Damage math', 'Builds'], title: 'DamageBuildAnalitics', key: 'damage' },
+  { id: 'REC-001', status: 'INTACT', recovered: '2026-11-12', serial: '0047-YK-001-RF', seed: 'faro', repo: `${GH}/residenza-faro`, site: 'https://yehorss.github.io/residenza-faro/', stack: 'TypeScript · Vite · SVG', chips: ['Scroll story', 'Floor plans', 'Mortgage calc', 'IT / EN'], title: 'Residenza Faro', key: 'faro' },
+  { id: 'REC-002', status: 'INTACT', recovered: '2026-11-12', serial: '0047-YK-002-RD', seed: 'restaurant', repo: `${GH}/restaurant-demo`, site: 'https://yehorss.github.io/restaurant-demo/', stack: 'TypeScript · React · Cloudflare Workers · D1', chips: ['Booking API', 'Admin', 'Two sites', 'UK / IT / EN'], title: 'Restaurant demo', key: 'restaurant' },
+  { id: 'REC-003', status: 'INTACT', recovered: '2026-11-11', serial: '0047-YK-003-VY', seed: 'vasyan', repo: `${GH}/vasyan-lang`, stack: 'C++17 · CMake', chips: ['Lexer', 'Parser', 'Bytecode', 'Validator', 'VM'], title: 'VasyanLang', key: 'vasyan' },
+  { id: 'REC-004', status: 'INTACT', recovered: '2026-10-24', serial: '0047-YK-004-TS', seed: 'tsm', repo: `${GH}/TSM`, stack: 'Tauri 2 · React · TypeScript', chips: ['Tauri', 'React', 'Carrier APIs', 'EN / RU / IT'], title: 'TSM', key: 'tsm' },
+  { id: 'REC-005', status: 'INTACT', recovered: '2026-11-08', serial: '0047-YK-005-CM', seed: 'controller', repo: `${GH}/controller-manager`, stack: 'C++ · WinAPI · WebView2', chips: ['DualSense', 'DualShock 4', 'XInput', 'HID'], title: 'Controller Manager', key: 'controller' },
+  { id: 'REC-006', status: 'PARTIAL', recovered: '2026-10-19', serial: '0047-YK-006-H4', seed: 'hoi4', repo: `${GH}/hoi4-external-advisor`, stack: 'C++20 · WinAPI · ImGui · DX11', chips: ['Memory reading', 'Dijkstra', 'Overlay', 'memscan'], title: 'HoI4 External Advisor', key: 'hoi4' },
+  { id: 'REC-007', status: 'PARTIAL', recovered: '2026-10-02', serial: '0047-YK-007-DS', seed: 'crit', repo: `${GH}/DragonSwordCritCombatModifacator`, stack: 'Node.js · JavaScript', chips: ['Unreal archives', 'Mod build', 'Sliders'], title: 'Crit & Combat', key: 'crit' },
+  { id: 'REC-008', status: 'CORRUPTED', recovered: '2026-09-14', serial: '0047-YK-008-DB', seed: 'damage', repo: `${GH}/DamageBuildAnalitics`, stack: 'JavaScript', chips: ['Damage math', 'Builds'], title: 'DamageBuildAnalitics', key: 'damage' },
 ];
 
 export const SKILLS: Skill[] = [
@@ -88,6 +91,11 @@ const en: Record<string, string> = {
   'rec.sector': 'sector',
   'rec.lost': 'lost',
   'rec.corrupt': 'Data loss · checksum failed',
+  'rec.site': 'Open site ↗',
+  'rec.faro.cat': 'Web · real estate',
+  'rec.faro.desc': 'A website for a seaside residence in Italy, told as one day from sunrise to the lighthouse. Pick a floor on the facade, a home on the plan, see the view and the monthly payment, then call.',
+  'rec.restaurant.cat': 'Web · booking backend',
+  'rec.restaurant.desc': 'Two restaurant websites in opposite styles, an Italian trattoria and a live-fire kitchen in Kyiv, on one booking backend: live menu, tables that cannot be double-booked, a staff admin, a nightly reset.',
   'rec.vasyan.cat': 'Systems · language design',
   'rec.vasyan.desc': 'A programming language with Ukrainian keywords, written from scratch: lexer, parser, bytecode compiler, a validator that checks every function before it runs, and a stack VM with limits on time, memory and call depth.',
   'rec.tsm.cat': 'Desktop · travel search',
@@ -158,6 +166,11 @@ const uk: Record<string, string> = {
   'rec.sector': 'сектор',
   'rec.lost': 'втрачено',
   'rec.corrupt': 'Втрата даних · контрольна сума не збігається',
+  'rec.site': 'Відкрити сайт ↗',
+  'rec.faro.cat': 'Веб · нерухомість',
+  'rec.faro.desc': 'Сайт житлового комплексу біля моря в Італії, розказаний як один день від світанку до маяка. Обираєш поверх на фасаді, квартиру на плані, бачиш вид і щомісячний платіж, а далі дзвониш.',
+  'rec.restaurant.cat': 'Веб · бекенд бронювання',
+  'rec.restaurant.desc': 'Два сайти ресторанів у протилежних стилях, італійська траторія і кухня на вогні в Києві, на одному бекенді бронювання: живе меню, столики без подвійних броней, адмінка для персоналу, нічне скидання.',
   'rec.vasyan.cat': 'Системи · дизайн мови',
   'rec.vasyan.desc': 'Мова програмування з українськими ключовими словами, написана з нуля: лексер, парсер, компілятор у байткод, валідатор, що перевіряє кожну функцію до запуску, і стекова VM з лімітами часу, пам’яті та глибини викликів.',
   'rec.tsm.cat': 'Десктоп · пошук поїздок',

@@ -63,7 +63,7 @@ function record(r: ArchiveRecord): string {
       <h2 class="jolt">${title(r)}</h2>
       <p data-i18n="rec.${r.key}.desc"></p>
       <div class="chips mono">${r.chips.map(c => `<span>${esc(c)}</span>`).join('')}</div>
-      <div class="foot mono"><span>${r.status === 'INTACT' ? esc(r.serial) : tr('rec.damaged')}</span><a href="${esc(r.repo)}" target="_blank" rel="noopener" data-i18n="rec.open"></a></div>
+      <div class="foot mono"><span>${r.status === 'INTACT' ? esc(r.serial) : tr('rec.damaged')}</span><span class="links"><a href="${esc(r.repo)}" target="_blank" rel="noopener" data-i18n="rec.open"></a>${r.site ? `<a href="${esc(r.site)}" target="_blank" rel="noopener" data-i18n="rec.site"></a>` : ''}</span></div>
     </div>
     ${note}
   </article>`;

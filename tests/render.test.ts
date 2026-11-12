@@ -8,19 +8,20 @@ beforeEach(() => { el = document.createElement('section'); });
 describe('archive', () => {
   beforeEach(() => renderArchive(el));
 
-  it('renders six records', () => expect(el.querySelectorAll('article.rec')).toHaveLength(6));
+  it('renders every record', () => expect(el.querySelectorAll('article.rec')).toHaveLength(RECORDS.length));
 
   it('damages records by status', () => {
     const recs = [...el.querySelectorAll('article.rec')];
-    expect(recs.filter(r => !r.matches('.damaged, .corrupted'))).toHaveLength(3);
+    expect(recs.filter(r => !r.matches('.damaged, .corrupted'))).toHaveLength(5);
     expect(recs.filter(r => r.matches('.damaged'))).toHaveLength(2);
     expect(recs.filter(r => r.matches('.corrupted'))).toHaveLength(1);
   });
 
-  it('links each record to its repository in a new tab', () => {
+  it('links each record to its repository (and live site, if any) in a new tab', () => {
     el.querySelectorAll('article.rec').forEach((rec, i) => {
       const links = rec.querySelectorAll('a[href^="http"]');
-      expect(links).toHaveLength(1);
+      expect(links).toHaveLength(RECORDS[i].site ? 2 : 1);
+      if (RECORDS[i].site) expect(links[1].getAttribute('href')).toBe(RECORDS[i].site);
       expect(links[0].getAttribute('href')).toBe(RECORDS[i].repo);
       expect(links[0].getAttribute('target')).toBe('_blank');
       expect(links[0].getAttribute('rel')).toContain('noopener');
