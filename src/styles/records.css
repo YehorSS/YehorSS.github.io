@@ -54,3 +54,20 @@
   .rec.corrupted::before { width: 50%; top: 12%; }
   .rec .foot { padding-bottom: 22px; }
 }
+
+/* WEB deck: live sites as compact cards, so the list stays short as it grows */
+.sites { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr)); gap: 24px; padding-block: 16px 40px; }
+.site { background: var(--paper); color: var(--ink); display: flex; flex-direction: column; min-width: 0; }
+.site .shot { display: block; border-bottom: 1px solid var(--ink); background: var(--ink); overflow: hidden; }
+.site .shot img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; transition: transform .5s ease; }
+.site:hover .shot img { transform: scale(1.03); }
+.site-body { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+.site .top { display: flex; justify-content: space-between; gap: 6px 16px; flex-wrap: wrap; color: var(--ink-soft); }
+.site h2 { margin: 0; font-family: var(--f-display); font-weight: 800; text-transform: uppercase; font-size: clamp(26px, 2.6vw, 38px); line-height: .95; letter-spacing: -.015em; overflow-wrap: anywhere; }
+.site p { margin: 0; font-size: 16px; }
+.site .foot { margin-top: auto; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; border-top: 1px dashed var(--ink-soft); padding-top: 14px; }
+.site .foot .barcode { width: 96px; height: 28px; }
+.site .foot .links { display: flex; gap: 8px; flex-wrap: wrap; }
+.site .foot a { font-family: var(--f-mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; background: var(--ink); color: var(--paper); padding: 10px 14px; }
+.site .foot a:hover, .site .foot a:focus-visible { background: var(--acid); color: var(--ink); }
+@media (prefers-reduced-motion: reduce) { .site .shot img { transition: none; } .site:hover .shot img { transform: none; } }

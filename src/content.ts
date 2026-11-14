@@ -9,6 +9,8 @@ export interface ArchiveRecord {
   seed: string;
   repo: string;
   site?: string;
+  /** which deck shows it: live sites, programs, or game tools */
+  deck: 'web' | 'soft' | 'mods';
   stack: string;
   chips: string[];
   title: string;
@@ -28,16 +30,16 @@ export const FREELANCEHUNT_URL = 'https://freelancehunt.com/freelancer/kujira88.
 const GH = 'https://github.com/YehorSS';
 
 export const RECORDS: ArchiveRecord[] = [
-  { id: 'REC-001', status: 'INTACT', recovered: '2026-11-14', serial: '0047-YK-001-SM', seed: 'smalto', repo: `${GH}/smalto`, site: 'https://yehorss.github.io/smalto/', stack: 'TypeScript · React · Three.js · Cloudflare Workers · D1', chips: ['Online shop', '3D glaze preview', 'Checkout', 'Admin', 'EN / IT'], title: 'Smalto', key: 'smalto' },
-  { id: 'REC-002', status: 'INTACT', recovered: '2026-11-14', serial: '0047-YK-002-TC', seed: 'tauceti', repo: `${GH}/tau-ceti`, site: 'https://yehorss.github.io/tau-ceti/', stack: 'TypeScript · Three.js · GLSL', chips: ['Real-time 3D', 'Shaders', 'Scroll flight', 'EN / UK'], title: 'Tau Ceti', key: 'tauceti' },
-  { id: 'REC-003', status: 'INTACT', recovered: '2026-11-12', serial: '0047-YK-003-RF', seed: 'faro', repo: `${GH}/residenza-faro`, site: 'https://yehorss.github.io/residenza-faro/', stack: 'TypeScript · Vite · SVG', chips: ['Scroll story', 'Floor plans', 'Mortgage calc', 'IT / EN'], title: 'Residenza Faro', key: 'faro' },
-  { id: 'REC-004', status: 'INTACT', recovered: '2026-11-12', serial: '0047-YK-004-RD', seed: 'restaurant', repo: `${GH}/restaurant-demo`, site: 'https://yehorss.github.io/restaurant-demo/', stack: 'TypeScript · React · Cloudflare Workers · D1', chips: ['Booking API', 'Admin', 'Two sites', 'UK / IT / EN'], title: 'Restaurant demo', key: 'restaurant' },
-  { id: 'REC-005', status: 'INTACT', recovered: '2026-11-11', serial: '0047-YK-005-VY', seed: 'vasyan', repo: `${GH}/vasyan-lang`, stack: 'C++17 · CMake', chips: ['Lexer', 'Parser', 'Bytecode', 'Validator', 'VM'], title: 'VasyanLang', key: 'vasyan' },
-  { id: 'REC-006', status: 'INTACT', recovered: '2026-10-24', serial: '0047-YK-006-TS', seed: 'tsm', repo: `${GH}/TSM`, stack: 'Tauri 2 · React · TypeScript', chips: ['Tauri', 'React', 'Carrier APIs', 'EN / RU / IT'], title: 'TSM', key: 'tsm' },
-  { id: 'REC-007', status: 'INTACT', recovered: '2026-11-08', serial: '0047-YK-007-CM', seed: 'controller', repo: `${GH}/controller-manager`, stack: 'C++ · WinAPI · WebView2', chips: ['DualSense', 'DualShock 4', 'XInput', 'HID'], title: 'Controller Manager', key: 'controller' },
-  { id: 'REC-008', status: 'PARTIAL', recovered: '2026-10-19', serial: '0047-YK-008-H4', seed: 'hoi4', repo: `${GH}/hoi4-external-advisor`, stack: 'C++20 · WinAPI · ImGui · DX11', chips: ['Memory reading', 'Dijkstra', 'Overlay', 'memscan'], title: 'HoI4 External Advisor', key: 'hoi4' },
-  { id: 'REC-009', status: 'PARTIAL', recovered: '2026-10-02', serial: '0047-YK-009-DS', seed: 'crit', repo: `${GH}/DragonSwordCritCombatModifacator`, stack: 'Node.js · JavaScript', chips: ['Unreal archives', 'Mod build', 'Sliders'], title: 'Crit & Combat', key: 'crit' },
-  { id: 'REC-010', status: 'CORRUPTED', recovered: '2026-09-14', serial: '0047-YK-010-DB', seed: 'damage', repo: `${GH}/DamageBuildAnalitics`, stack: 'JavaScript', chips: ['Damage math', 'Builds'], title: 'DamageBuildAnalitics', key: 'damage' },
+  { id: 'REC-001', status: 'INTACT', recovered: '2026-11-14', serial: '0047-YK-001-SM', seed: 'smalto', repo: `${GH}/smalto`, site: 'https://yehorss.github.io/smalto/', stack: 'TypeScript · React · Three.js · Cloudflare Workers · D1', chips: ['Online shop', '3D glaze preview', 'Checkout', 'Admin', 'EN / IT'], deck: 'web', title: 'Smalto', key: 'smalto' },
+  { id: 'REC-002', status: 'INTACT', recovered: '2026-11-14', serial: '0047-YK-002-TC', seed: 'tauceti', repo: `${GH}/tau-ceti`, site: 'https://yehorss.github.io/tau-ceti/', stack: 'TypeScript · Three.js · GLSL', chips: ['Real-time 3D', 'Shaders', 'Scroll flight', 'EN / UK'], deck: 'web', title: 'Tau Ceti', key: 'tauceti' },
+  { id: 'REC-003', status: 'INTACT', recovered: '2026-11-12', serial: '0047-YK-003-RF', seed: 'faro', repo: `${GH}/residenza-faro`, site: 'https://yehorss.github.io/residenza-faro/', stack: 'TypeScript · Vite · SVG', chips: ['Scroll story', 'Floor plans', 'Mortgage calc', 'IT / EN'], deck: 'web', title: 'Residenza Faro', key: 'faro' },
+  { id: 'REC-004', status: 'INTACT', recovered: '2026-11-12', serial: '0047-YK-004-RD', seed: 'restaurant', repo: `${GH}/restaurant-demo`, site: 'https://yehorss.github.io/restaurant-demo/', stack: 'TypeScript · React · Cloudflare Workers · D1', chips: ['Booking API', 'Admin', 'Two sites', 'UK / IT / EN'], deck: 'web', title: 'Restaurant demo', key: 'restaurant' },
+  { id: 'REC-005', status: 'INTACT', recovered: '2026-11-11', serial: '0047-YK-005-VY', seed: 'vasyan', repo: `${GH}/vasyan-lang`, stack: 'C++17 · CMake', chips: ['Lexer', 'Parser', 'Bytecode', 'Validator', 'VM'], deck: 'soft', title: 'VasyanLang', key: 'vasyan' },
+  { id: 'REC-006', status: 'INTACT', recovered: '2026-10-24', serial: '0047-YK-006-TS', seed: 'tsm', repo: `${GH}/TSM`, stack: 'Tauri 2 · React · TypeScript', chips: ['Tauri', 'React', 'Carrier APIs', 'EN / RU / IT'], deck: 'soft', title: 'TSM', key: 'tsm' },
+  { id: 'REC-007', status: 'INTACT', recovered: '2026-11-08', serial: '0047-YK-007-CM', seed: 'controller', repo: `${GH}/controller-manager`, stack: 'C++ · WinAPI · WebView2', chips: ['DualSense', 'DualShock 4', 'XInput', 'HID'], deck: 'soft', title: 'Controller Manager', key: 'controller' },
+  { id: 'REC-008', status: 'PARTIAL', recovered: '2026-10-19', serial: '0047-YK-008-H4', seed: 'hoi4', repo: `${GH}/hoi4-external-advisor`, stack: 'C++20 · WinAPI · ImGui · DX11', chips: ['Memory reading', 'Dijkstra', 'Overlay', 'memscan'], deck: 'mods', title: 'HoI4 External Advisor', key: 'hoi4' },
+  { id: 'REC-009', status: 'PARTIAL', recovered: '2026-10-02', serial: '0047-YK-009-DS', seed: 'crit', repo: `${GH}/DragonSwordCritCombatModifacator`, stack: 'Node.js · JavaScript', chips: ['Unreal archives', 'Mod build', 'Sliders'], deck: 'mods', title: 'Crit & Combat', key: 'crit' },
+  { id: 'REC-010', status: 'CORRUPTED', recovered: '2026-09-14', serial: '0047-YK-010-DB', seed: 'damage', repo: `${GH}/DamageBuildAnalitics`, stack: 'JavaScript', chips: ['Damage math', 'Builds'], deck: 'mods', title: 'DamageBuildAnalitics', key: 'damage' },
 ];
 
 export const SKILLS: Skill[] = [
@@ -71,7 +73,9 @@ const en: Record<string, string> = {
   'rail.lost': 'LOST',
   'gauge': 'Archive integrity',
   'deck.bridge': 'Bridge',
-  'deck.archive': 'Archive · recovered records',
+  'deck.web': 'Web · live sites',
+  'deck.soft': 'Soft · programs',
+  'deck.mods': 'Mods · game tools',
   'deck.engineering': 'Engineering · system readouts',
   'deck.comms': 'Comms',
   'bridge.crew': 'Last engineer on board',
@@ -83,7 +87,9 @@ const en: Record<string, string> = {
   'spec.systems': 'Systems',
   'spec.interface': 'Interface',
   'spec.comms': 'Comms',
-  'bridge.open': 'Open the archive ↓',
+  'bridge.open': 'Open the sites ↓',
+  'bridge.code': 'Programs ↓',
+  'site.code': 'Code ↗',
   'rec.record': 'Record',
   'rec.status': 'Status',
   'rec.recovered': 'Recovered',
@@ -150,7 +156,9 @@ const uk: Record<string, string> = {
   'rail.lost': 'ВТРАЧЕНО',
   'gauge': 'Цілісність архіву',
   'deck.bridge': 'Місток',
-  'deck.archive': 'Архів · відновлені записи',
+  'deck.web': 'Веб · живі сайти',
+  'deck.soft': 'Софт · програми',
+  'deck.mods': 'Моди · ігрові інструменти',
   'deck.engineering': 'Інженерний відсік · показники систем',
   'deck.comms': 'Зв’язок',
   'bridge.crew': 'Останній інженер на борту',
@@ -162,7 +170,9 @@ const uk: Record<string, string> = {
   'spec.systems': 'Системи',
   'spec.interface': 'Інтерфейс',
   'spec.comms': 'Зв’язок',
-  'bridge.open': 'Відкрити архів ↓',
+  'bridge.open': 'Відкрити сайти ↓',
+  'bridge.code': 'Програми ↓',
+  'site.code': 'Код ↗',
   'rec.record': 'Запис',
   'rec.status': 'Стан',
   'rec.recovered': 'Відновлено',

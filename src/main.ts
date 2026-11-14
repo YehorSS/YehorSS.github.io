@@ -5,7 +5,7 @@ import './styles/systems.css';
 import './styles/effects.css';
 import type { Lang } from './content';
 import { applyLang, detectLang, readStoredLang, storeLang } from './i18n';
-import { fitHeadline, renderArchive, renderBridge, renderComms, renderEngineering } from './render';
+import { fitHeadline, renderBridge, renderComms, renderEngineering, renderRecords, renderWeb } from './render';
 import { mountGauge, mountGaugeDrag } from './gauge';
 import { renderTemp, mountTelemetry } from './telemetry';
 import { mountGlitch } from './glitch';
@@ -15,7 +15,9 @@ const $ = (id: string) => document.getElementById(id)!;
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 renderBridge($('deck-bridge'));
-renderArchive($('deck-archive'));
+renderWeb($('deck-web'));
+renderRecords($('deck-soft'), '03', 'soft');
+renderRecords($('deck-mods'), '04', 'mods');
 renderEngineering($('deck-engineering'));
 renderComms($('deck-comms'));
 

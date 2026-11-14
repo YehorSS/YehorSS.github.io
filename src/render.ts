@@ -24,7 +24,8 @@ export function renderBridge(el: HTMLElement): void {
       ${tr('spec.comms', 'dt')}<dd>UA · RU · EN · IT</dd>
     </dl>
     <div class="cta">
-      <a class="btn solid" href="#deck-archive" data-i18n="bridge.open"></a>
+      <a class="btn solid" href="#deck-web" data-i18n="bridge.open"></a>
+      <a class="btn" href="#deck-soft" data-i18n="bridge.code"></a>
       <a class="btn" href="https://github.com/YehorSS" target="_blank" rel="noopener">GitHub ↗</a>
     </div>
   </div>`;
@@ -69,9 +70,31 @@ function record(r: ArchiveRecord): string {
   </article>`;
 }
 
-export function renderArchive(el: HTMLElement): void {
-  el.innerHTML = `${deckHead('02', 'deck.archive', `${RECORDS.length} / ${RECORDS.length}`)}
-  <div class="records">${RECORDS.map(record).join('')}</div>`;
+function siteCard(r: ArchiveRecord): string {
+  return `<article class="site">
+    <a class="shot" href="${esc(r.site!)}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="sites/${esc(r.key)}.webp" alt="" width="640" height="400" loading="lazy" decoding="async"></a>
+    <div class="site-body">
+      <div class="top mono">${tr(`rec.${r.key}.cat`)}<span>${esc(r.id)}</span></div>
+      <h2 class="jolt">${esc(r.title)}</h2>
+      <p data-i18n="rec.${r.key}.desc"></p>
+      <div class="chips mono">${r.chips.map(c => `<span>${esc(c)}</span>`).join('')}</div>
+      <div class="foot mono">${barcodeSvg(r.seed, false)}<span class="links"><a href="${esc(r.site!)}" target="_blank" rel="noopener" data-i18n="rec.site"></a><a href="${esc(r.repo)}" target="_blank" rel="noopener" data-i18n="site.code"></a></span></div>
+    </div>
+  </article>`;
+}
+
+/** Live sites: compact cards with a picture, so a growing list stays one screen or two. */
+export function renderWeb(el: HTMLElement): void {
+  const sites = RECORDS.filter(r => r.deck === 'web');
+  el.innerHTML = `${deckHead('02', 'deck.web', `${sites.length} LIVE`)}
+  <div class="sites">${sites.map(siteCard).join('')}</div>`;
+}
+
+/** Programs or game tools: the full damaged manifests. */
+export function renderRecords(el: HTMLElement, no: string, deck: 'soft' | 'mods'): void {
+  const recs = RECORDS.filter(r => r.deck === deck);
+  el.innerHTML = `${deckHead(no, `deck.${deck}`, `${recs.length} / ${recs.length}`)}
+  <div class="records">${recs.map(record).join('')}</div>`;
 }
 
 export function renderEngineering(el: HTMLElement): void {
@@ -81,7 +104,7 @@ export function renderEngineering(el: HTMLElement): void {
       <div class="load" style="--load:${s.load}" aria-hidden="true"><i></i></div>
       <ul class="mono">${s.items.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
     </div>`).join('');
-  el.innerHTML = `${deckHead('03', 'deck.engineering', `${SKILLS.length} SYS`)}<div class="systems">${sys}</div>`;
+  el.innerHTML = `${deckHead('05', 'deck.engineering', `${SKILLS.length} SYS`)}<div class="systems">${sys}</div>`;
 }
 
 const OFFLINE = ['CH-01 DEEP RELAY', 'CH-02 COLONY BEACON', 'CH-06 CREW BAND'];
@@ -95,7 +118,7 @@ export function renderComms(el: HTMLElement): void {
       <code class="raw" hidden>${esc(c.copy)}</code>
       <button type="button" class="copy mono" data-copy="${esc(c.copy)}" data-i18n="comms.copy"></button>
     </li>`).join('');
-  el.innerHTML = `${deckHead('04', 'deck.comms', '3 / 6')}
+  el.innerHTML = `${deckHead('06', 'deck.comms', '3 / 6')}
   <div class="comms">
     <p class="lead" data-i18n="comms.lead"></p>
     <ul class="channels">${dead(OFFLINE[0])}${dead(OFFLINE[1])}${live}${dead(OFFLINE[2])}</ul>

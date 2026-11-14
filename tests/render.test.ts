@@ -1,50 +1,67 @@
 import { beforeEach, describe, expect, it } from 'vitest';
 import { RECORDS } from '../src/content';
-import { renderArchive, renderBridge } from '../src/render';
+import { renderBridge, renderRecords, renderWeb } from '../src/render';
 
 let el: HTMLElement;
 beforeEach(() => { el = document.createElement('section'); });
 
-describe('archive', () => {
-  beforeEach(() => renderArchive(el));
+const web = RECORDS.filter(r => r.deck === 'web');
+const code = RECORDS.filter(r => r.deck !== 'web');
 
-  it('renders every record', () => expect(el.querySelectorAll('article.rec')).toHaveLength(RECORDS.length));
+describe('web deck', () => {
+  beforeEach(() => renderWeb(el));
 
-  it('damages records by status', () => {
-    const recs = [...el.querySelectorAll('article.rec')];
-    expect(recs.filter(r => !r.matches('.damaged, .corrupted'))).toHaveLength(7);
-    expect(recs.filter(r => r.matches('.damaged'))).toHaveLength(2);
-    expect(recs.filter(r => r.matches('.corrupted'))).toHaveLength(1);
+  it('shows every site as a compact card and nothing else', () => {
+    expect(el.querySelectorAll('article.site')).toHaveLength(web.length);
+    expect(el.querySelectorAll('article.rec')).toHaveLength(0);
+    expect(web.every(r => r.site)).toBe(true);
   });
 
-  it('links each record to its repository (and live site, if any) in a new tab', () => {
-    el.querySelectorAll('article.rec').forEach((rec, i) => {
-      const links = rec.querySelectorAll('a[href^="http"]');
-      expect(links).toHaveLength(RECORDS[i].site ? 2 : 1);
-      if (RECORDS[i].site) expect(links[1].getAttribute('href')).toBe(RECORDS[i].site);
-      expect(links[0].getAttribute('href')).toBe(RECORDS[i].repo);
-      expect(links[0].getAttribute('target')).toBe('_blank');
-      expect(links[0].getAttribute('rel')).toContain('noopener');
+  it('opens the live site and the code in a new tab, with a picture of the site', () => {
+    el.querySelectorAll('article.site').forEach((card, i) => {
+      const hrefs = [...card.querySelectorAll('a[href^="http"]')].map(a => a.getAttribute('href'));
+      expect(hrefs).toContain(web[i].site);
+      expect(hrefs).toContain(web[i].repo);
+      card.querySelectorAll('a[href^="http"]').forEach(a => expect(a.getAttribute('rel')).toContain('noopener'));
+      expect(card.querySelector('img')!.getAttribute('src')).toBe(`sites/${web[i].key}.webp`);
+      expect(card.querySelector('h2')!.textContent).toBe(web[i].title);
     });
   });
+});
 
-  it('keeps the full title readable and draws a barcode', () => {
+describe('soft and mods decks', () => {
+  it('splits the code records by deck, keeping their damage', () => {
+    renderRecords(el, '03', 'soft');
+    const soft = [...el.querySelectorAll('article.rec')];
+    expect(soft).toHaveLength(code.filter(r => r.deck === 'soft').length);
+    expect(soft.every(r => !r.matches('.damaged, .corrupted'))).toBe(true);
+    renderRecords(el, '04', 'mods');
+    const mods = [...el.querySelectorAll('article.rec')];
+    expect(mods).toHaveLength(code.filter(r => r.deck === 'mods').length);
+    expect(mods.filter(r => r.matches('.damaged'))).toHaveLength(2);
+    expect(mods.filter(r => r.matches('.corrupted'))).toHaveLength(1);
+  });
+
+  it('links each record to its repository in a new tab and draws a barcode', () => {
+    renderRecords(el, '03', 'soft');
+    const soft = code.filter(r => r.deck === 'soft');
     el.querySelectorAll('article.rec').forEach((rec, i) => {
-      expect(rec.querySelector('h2')!.textContent!.replace(/\s+/g, ' ').trim()).toBe(RECORDS[i].title);
+      const a = rec.querySelector('a[href^="http"]')!;
+      expect(a.getAttribute('href')).toBe(soft[i].repo);
+      expect(a.getAttribute('target')).toBe('_blank');
+      expect(rec.querySelector('h2')!.textContent!.replace(/\s+/g, ' ').trim()).toBe(soft[i].title);
       expect(rec.querySelector('svg.barcode')).not.toBeNull();
     });
-  });
-
-  it('translates through data-i18n keys', () => {
     expect(el.querySelector('[data-i18n="rec.vasyan.desc"]')).not.toBeNull();
   });
 });
 
 describe('bridge', () => {
-  it('has the name and a link to the archive', () => {
+  it('has the name and links to the sites and the programs', () => {
     renderBridge(el);
     expect(el.querySelector('h1 [data-i18n="bridge.l1"]')).not.toBeNull();
-    expect(el.querySelector('a[href="#deck-archive"]')).not.toBeNull();
+    expect(el.querySelector('a[href="#deck-web"]')).not.toBeNull();
+    expect(el.querySelector('a[href="#deck-soft"]')).not.toBeNull();
   });
 });
 
