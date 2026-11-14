@@ -12,7 +12,7 @@ describe('archive', () => {
 
   it('damages records by status', () => {
     const recs = [...el.querySelectorAll('article.rec')];
-    expect(recs.filter(r => !r.matches('.damaged, .corrupted'))).toHaveLength(6);
+    expect(recs.filter(r => !r.matches('.damaged, .corrupted'))).toHaveLength(7);
     expect(recs.filter(r => r.matches('.damaged'))).toHaveLength(2);
     expect(recs.filter(r => r.matches('.corrupted'))).toHaveLength(1);
   });

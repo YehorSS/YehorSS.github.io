@@ -28,15 +28,16 @@ export const FREELANCEHUNT_URL = 'https://freelancehunt.com/freelancer/kujira88.
 const GH = 'https://github.com/YehorSS';
 
 export const RECORDS: ArchiveRecord[] = [
-  { id: 'REC-001', status: 'INTACT', recovered: '2026-11-14', serial: '0047-YK-001-TC', seed: 'tauceti', repo: `${GH}/tau-ceti`, site: 'https://yehorss.github.io/tau-ceti/', stack: 'TypeScript · Three.js · GLSL', chips: ['Real-time 3D', 'Shaders', 'Scroll flight', 'EN / UK'], title: 'Tau Ceti', key: 'tauceti' },
-  { id: 'REC-002', status: 'INTACT', recovered: '2026-11-12', serial: '0047-YK-002-RF', seed: 'faro', repo: `${GH}/residenza-faro`, site: 'https://yehorss.github.io/residenza-faro/', stack: 'TypeScript · Vite · SVG', chips: ['Scroll story', 'Floor plans', 'Mortgage calc', 'IT / EN'], title: 'Residenza Faro', key: 'faro' },
-  { id: 'REC-003', status: 'INTACT', recovered: '2026-11-12', serial: '0047-YK-003-RD', seed: 'restaurant', repo: `${GH}/restaurant-demo`, site: 'https://yehorss.github.io/restaurant-demo/', stack: 'TypeScript · React · Cloudflare Workers · D1', chips: ['Booking API', 'Admin', 'Two sites', 'UK / IT / EN'], title: 'Restaurant demo', key: 'restaurant' },
-  { id: 'REC-004', status: 'INTACT', recovered: '2026-11-11', serial: '0047-YK-004-VY', seed: 'vasyan', repo: `${GH}/vasyan-lang`, stack: 'C++17 · CMake', chips: ['Lexer', 'Parser', 'Bytecode', 'Validator', 'VM'], title: 'VasyanLang', key: 'vasyan' },
-  { id: 'REC-005', status: 'INTACT', recovered: '2026-10-24', serial: '0047-YK-005-TS', seed: 'tsm', repo: `${GH}/TSM`, stack: 'Tauri 2 · React · TypeScript', chips: ['Tauri', 'React', 'Carrier APIs', 'EN / RU / IT'], title: 'TSM', key: 'tsm' },
-  { id: 'REC-006', status: 'INTACT', recovered: '2026-11-08', serial: '0047-YK-006-CM', seed: 'controller', repo: `${GH}/controller-manager`, stack: 'C++ · WinAPI · WebView2', chips: ['DualSense', 'DualShock 4', 'XInput', 'HID'], title: 'Controller Manager', key: 'controller' },
-  { id: 'REC-007', status: 'PARTIAL', recovered: '2026-10-19', serial: '0047-YK-007-H4', seed: 'hoi4', repo: `${GH}/hoi4-external-advisor`, stack: 'C++20 · WinAPI · ImGui · DX11', chips: ['Memory reading', 'Dijkstra', 'Overlay', 'memscan'], title: 'HoI4 External Advisor', key: 'hoi4' },
-  { id: 'REC-008', status: 'PARTIAL', recovered: '2026-10-02', serial: '0047-YK-008-DS', seed: 'crit', repo: `${GH}/DragonSwordCritCombatModifacator`, stack: 'Node.js · JavaScript', chips: ['Unreal archives', 'Mod build', 'Sliders'], title: 'Crit & Combat', key: 'crit' },
-  { id: 'REC-009', status: 'CORRUPTED', recovered: '2026-09-14', serial: '0047-YK-009-DB', seed: 'damage', repo: `${GH}/DamageBuildAnalitics`, stack: 'JavaScript', chips: ['Damage math', 'Builds'], title: 'DamageBuildAnalitics', key: 'damage' },
+  { id: 'REC-001', status: 'INTACT', recovered: '2026-11-14', serial: '0047-YK-001-SM', seed: 'smalto', repo: `${GH}/smalto`, site: 'https://yehorss.github.io/smalto/', stack: 'TypeScript · React · Three.js · Cloudflare Workers · D1', chips: ['Online shop', '3D glaze preview', 'Checkout', 'Admin', 'EN / IT'], title: 'Smalto', key: 'smalto' },
+  { id: 'REC-002', status: 'INTACT', recovered: '2026-11-14', serial: '0047-YK-002-TC', seed: 'tauceti', repo: `${GH}/tau-ceti`, site: 'https://yehorss.github.io/tau-ceti/', stack: 'TypeScript · Three.js · GLSL', chips: ['Real-time 3D', 'Shaders', 'Scroll flight', 'EN / UK'], title: 'Tau Ceti', key: 'tauceti' },
+  { id: 'REC-003', status: 'INTACT', recovered: '2026-11-12', serial: '0047-YK-003-RF', seed: 'faro', repo: `${GH}/residenza-faro`, site: 'https://yehorss.github.io/residenza-faro/', stack: 'TypeScript · Vite · SVG', chips: ['Scroll story', 'Floor plans', 'Mortgage calc', 'IT / EN'], title: 'Residenza Faro', key: 'faro' },
+  { id: 'REC-004', status: 'INTACT', recovered: '2026-11-12', serial: '0047-YK-004-RD', seed: 'restaurant', repo: `${GH}/restaurant-demo`, site: 'https://yehorss.github.io/restaurant-demo/', stack: 'TypeScript · React · Cloudflare Workers · D1', chips: ['Booking API', 'Admin', 'Two sites', 'UK / IT / EN'], title: 'Restaurant demo', key: 'restaurant' },
+  { id: 'REC-005', status: 'INTACT', recovered: '2026-11-11', serial: '0047-YK-005-VY', seed: 'vasyan', repo: `${GH}/vasyan-lang`, stack: 'C++17 · CMake', chips: ['Lexer', 'Parser', 'Bytecode', 'Validator', 'VM'], title: 'VasyanLang', key: 'vasyan' },
+  { id: 'REC-006', status: 'INTACT', recovered: '2026-10-24', serial: '0047-YK-006-TS', seed: 'tsm', repo: `${GH}/TSM`, stack: 'Tauri 2 · React · TypeScript', chips: ['Tauri', 'React', 'Carrier APIs', 'EN / RU / IT'], title: 'TSM', key: 'tsm' },
+  { id: 'REC-007', status: 'INTACT', recovered: '2026-11-08', serial: '0047-YK-007-CM', seed: 'controller', repo: `${GH}/controller-manager`, stack: 'C++ · WinAPI · WebView2', chips: ['DualSense', 'DualShock 4', 'XInput', 'HID'], title: 'Controller Manager', key: 'controller' },
+  { id: 'REC-008', status: 'PARTIAL', recovered: '2026-10-19', serial: '0047-YK-008-H4', seed: 'hoi4', repo: `${GH}/hoi4-external-advisor`, stack: 'C++20 · WinAPI · ImGui · DX11', chips: ['Memory reading', 'Dijkstra', 'Overlay', 'memscan'], title: 'HoI4 External Advisor', key: 'hoi4' },
+  { id: 'REC-009', status: 'PARTIAL', recovered: '2026-10-02', serial: '0047-YK-009-DS', seed: 'crit', repo: `${GH}/DragonSwordCritCombatModifacator`, stack: 'Node.js · JavaScript', chips: ['Unreal archives', 'Mod build', 'Sliders'], title: 'Crit & Combat', key: 'crit' },
+  { id: 'REC-010', status: 'CORRUPTED', recovered: '2026-09-14', serial: '0047-YK-010-DB', seed: 'damage', repo: `${GH}/DamageBuildAnalitics`, stack: 'JavaScript', chips: ['Damage math', 'Builds'], title: 'DamageBuildAnalitics', key: 'damage' },
 ];
 
 export const SKILLS: Skill[] = [
@@ -93,6 +94,8 @@ const en: Record<string, string> = {
   'rec.lost': 'lost',
   'rec.corrupt': 'Data loss · checksum failed',
   'rec.site': 'Open site ↗',
+  'rec.smalto.cat': 'Web · online shop',
+  'rec.smalto.desc': 'A working shop for a ceramics workshop in Faenza. Turn a cup in 3D and change its glaze, pay with a test card, then see the order in the admin. Two people cannot buy the last piece.',
   'rec.tauceti.cat': 'Web · real-time 3D',
   'rec.tauceti.desc': 'A flight from the Sun to Tau Ceti and its four candidate planets, drawn live in the browser. Scroll moves the camera; every number comes from the papers, every surface is baked once so it stays smooth.',
   'rec.faro.cat': 'Web · real estate',
@@ -170,6 +173,8 @@ const uk: Record<string, string> = {
   'rec.lost': 'втрачено',
   'rec.corrupt': 'Втрата даних · контрольна сума не збігається',
   'rec.site': 'Відкрити сайт ↗',
+  'rec.smalto.cat': 'Веб · інтернет-магазин',
+  'rec.smalto.desc': 'Робочий магазин керамічної майстерні у Фаенці. Крутиш чашку в 3D і міняєш глазур, платиш тестовою карткою, а потім бачиш замовлення в адмінці. Останню чашку двоє купити не можуть.',
   'rec.tauceti.cat': 'Веб · 3D у реальному часі',
   'rec.tauceti.desc': 'Політ від Сонця до Тау Кита та її чотирьох можливих планет, намальований просто в браузері. Прокрутка веде камеру; кожне число взяте з наукових статей, кожна поверхня запечена заздалегідь, тож усе йде плавно.',
   'rec.faro.cat': 'Веб · нерухомість',
