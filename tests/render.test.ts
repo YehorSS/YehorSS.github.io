@@ -17,13 +17,13 @@ describe('web deck', () => {
     expect(web.every(r => r.site)).toBe(true);
   });
 
-  it('opens the live site and the code in a new tab, with a picture of the site', () => {
+  it('opens the live site and the code in a new tab', () => {
     el.querySelectorAll('article.site').forEach((card, i) => {
       const hrefs = [...card.querySelectorAll('a[href^="http"]')].map(a => a.getAttribute('href'));
       expect(hrefs).toContain(web[i].site);
       expect(hrefs).toContain(web[i].repo);
       card.querySelectorAll('a[href^="http"]').forEach(a => expect(a.getAttribute('rel')).toContain('noopener'));
-      expect(card.querySelector('img')!.getAttribute('src')).toBe(`sites/${web[i].key}.webp`);
+      expect(card.querySelector('img')).toBeNull();
       expect(card.querySelector('h2')!.textContent).toBe(web[i].title);
     });
   });

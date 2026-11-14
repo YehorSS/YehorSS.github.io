@@ -72,7 +72,6 @@ function record(r: ArchiveRecord): string {
 
 function siteCard(r: ArchiveRecord): string {
   return `<article class="site">
-    <a class="shot" href="${esc(r.site!)}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="sites/${esc(r.key)}.webp" alt="" width="640" height="400" loading="lazy" decoding="async"></a>
     <div class="site-body">
       <div class="top mono">${tr(`rec.${r.key}.cat`)}<span>${esc(r.id)}</span></div>
       <h2 class="jolt">${esc(r.title)}</h2>
@@ -83,7 +82,7 @@ function siteCard(r: ArchiveRecord): string {
   </article>`;
 }
 
-/** Live sites: compact cards with a picture, so a growing list stays one screen or two. */
+/** Live sites: compact cards, so a growing list stays one screen or two. */
 export function renderWeb(el: HTMLElement): void {
   const sites = RECORDS.filter(r => r.deck === 'web');
   el.innerHTML = `${deckHead('02', 'deck.web', `${sites.length} LIVE`)}
