@@ -30,6 +30,7 @@ export const FREELANCEHUNT_URL = 'https://freelancehunt.com/freelancer/kujira88.
 const GH = 'https://github.com/YehorSS';
 
 export const RECORDS: ArchiveRecord[] = [
+  { id: 'REC-014', status: 'INTACT', recovered: '2026-11-21', serial: '0047-YK-014-SC', seed: 'steam-showcase-cutter', repo: `${GH}/YehorSS.github.io/tree/main/steam-showcase-cutter`, site: 'https://yehorss.github.io/steam-showcase-cutter/', deck: 'web', stack: 'JavaScript · Canvas', chips: ['Steam Artwork', 'Local export', 'EN / RU'], title: 'Steam Showcase Cutter', key: 'steamcut' },
   { id: 'REC-001', status: 'INTACT', recovered: '2026-11-15', serial: '0047-YK-001-NB', seed: 'nebbia', repo: `${GH}/nebbia`, site: 'https://yehorss.github.io/nebbia/', deck: 'web', stack: 'TypeScript · Vite', chips: ['Festival poster', 'Personal timetable', 'Share link', 'IT / EN'], title: 'Nebbia', key: 'nebbia' },
   { id: 'REC-002', status: 'INTACT', recovered: '2026-11-15', serial: '0047-YK-002-CP', seed: 'coperto', repo: `${GH}/coperto`, site: 'https://yehorss.github.io/coperto/', deck: 'web', stack: 'TypeScript · React · SVG charts', chips: ['Dashboard', 'Floor plan', 'Bookings', 'Light / dark', 'UK / EN'], title: 'Coperto', key: 'coperto' },
   { id: 'REC-003', status: 'INTACT', recovered: '2026-11-14', serial: '0047-YK-003-OM', seed: 'ottomila', repo: `${GH}/ottomila`, site: 'https://yehorss.github.io/ottomila/', deck: 'web', stack: 'TypeScript · Three.js · GLSL · Copernicus DEM', chips: ['Real terrain', 'Topo shader', 'Scroll climb', 'Quiz', 'IT / EN / UK'], title: 'Ottomila', key: 'ottomila' },
@@ -103,6 +104,8 @@ const en: Record<string, string> = {
   'rec.lost': 'lost',
   'rec.corrupt': 'Data loss · checksum failed',
   'rec.site': 'Open site ↗',
+  'rec.steamcut.cat': 'Web · Steam profile tool',
+  'rec.steamcut.desc': 'Crop an image for Artwork or Featured Artwork Showcase. The browser previews the layout, exports the pieces at Steam’s dimensions and walks you through publishing them.',
   'rec.nebbia.cat': 'Web · event poster',
   'rec.nebbia.desc': 'A poster site for a three-night electronic music festival in the old Bovisa gasworks, Milan. Pick the sets you want: the timetable shows clashes, walking time between stages and the minutes you will miss, and the plan can be sent as a link.',
   'rec.coperto.cat': 'Web · admin dashboard',
@@ -192,6 +195,8 @@ const uk: Record<string, string> = {
   'rec.lost': 'втрачено',
   'rec.corrupt': 'Втрата даних · контрольна сума не збігається',
   'rec.site': 'Відкрити сайт ↗',
+  'rec.steamcut.cat': 'Веб · інструмент для профілю Steam',
+  'rec.steamcut.desc': 'Кадруй зображення для звичайної або вибраної вітрини Steam. Браузер показує макет, готує частини потрібного розміру й пояснює, як їх опублікувати.',
   'rec.nebbia.cat': 'Веб · афіша події',
   'rec.nebbia.desc': 'Сайт-афіша фестивалю електронної музики на три ночі в старому газовому заводі Бовізи, Мілан. Обираєш сети: розклад показує накладки, час пішки між сценами й хвилини, які пропустиш, а план можна надіслати посиланням.',
   'rec.coperto.cat': 'Веб · панель керування',

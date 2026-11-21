@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0b09">
+  <meta name="description" content="Crop and split artwork for your Steam profile showcase.">
+  <title>Steam Showcase Cutter</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;800&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+  <link rel="stylesheet" href="../src/styles/tokens.css">
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./editor.js"></script>
+</head>
+<body>
+  <header class="top"><div class="wrap bar mono">
+    <a class="brand" href="/#deck-web">← GEKKO-MO</a>
+    <div class="header-tools">
+      <a class="nav" href="#guide" data-ru="Инструкция ↘">Upload guide ↘</a>
+      <div class="languages" id="languages" role="group" aria-label="Language" data-ru-aria="Язык">
+        <button type="button" lang="en" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" lang="ru" data-lang="ru" aria-pressed="false">RU</button>
+      </div>
+    </div>
+  </div></header>
+  <main class="wrap">
+    <div class="intro">
+      <h1>Steam Showcase<br>Cutter</h1>
+      <p data-ru="Обрежь иллюстрацию и скачай файлы для витрины твоего профиля Steam.">Crop and split artwork for your Steam profile showcase.</p>
+    </div>
+    <div class="workspace">
+      <section class="panel preview" aria-labelledby="preview-title">
+        <div class="panel-head mono"><h2 id="preview-title" data-ru="Предпросмотр">Preview</h2><span id="source-info">Example</span></div>
+        <div id="stage" class="stage" tabindex="0" aria-label="Crop preview" data-ru-aria="Предпросмотр кадра" aria-describedby="preview-help">
+          <div id="pieces" class="pieces"></div>
+        </div>
+        <div class="panel-foot"><span id="preview-help" data-ru="Сдвиг кадра — мышью или стрелками.">Drag the artwork or use the arrow keys.</span><button type="button" class="subtle" id="reset" data-ru="Сбросить кадр">Reset crop</button></div>
+      </section>
+      <section class="panel settings" aria-labelledby="settings-title">
+        <div class="panel-head mono"><h2 id="settings-title" data-ru="Настройки">Settings</h2></div>
+        <div class="settings-body">
+          <label for="source" class="file-button"><span data-ru="Выбрать изображение">Choose an image</span><span aria-hidden="true">↗</span></label>
+          <input type="file" id="source" accept="image/png,image/jpeg,image/webp" class="visually-hidden">
+          <div id="file-note" class="file-note"><span id="file-name"></span><span data-ru="PNG, JPG или WebP · обработка в браузере">PNG, JPG or WebP · processed in your browser</span></div>
+          <fieldset>
+            <legend data-ru="Тип витрины">Showcase type</legend>
+            <label class="format"><input type="radio" name="format" value="artwork" checked><span><strong data-ru="Витрина иллюстраций">Artwork Showcase</strong><small data-ru="506 + 100 px · 2 файла">506 + 100 px · 2 files</small></span></label>
+            <label class="format"><input type="radio" name="format" value="featured"><span><strong data-ru="Избранная иллюстрация">Featured Artwork Showcase</strong><small data-ru="630 px · 1 файл">630 px · 1 file</small></span></label>
+          </fieldset>
+          <div class="height-row"><label for="height" data-ru="Высота">Height</label><div class="number"><input type="number" id="height" min="1" max="4096" value="410"><span>px</span></div></div>
+          <input type="range" id="height-range" aria-label="Artwork height" data-ru-aria="Высота изображения" min="1" max="4096" value="410">
+          <button id="export" type="button" class="primary" disabled><span data-ru="Подготовить файлы">Prepare files</span><span aria-hidden="true">↓</span></button>
+          <p id="status" role="status" class="export-status" hidden></p>
+          <div id="downloads" class="downloads" hidden></div>
+        </div>
+      </section>
+    </div>
+    <section id="guide" class="guide" aria-labelledby="guide-title">
+      <div class="guide-heading"><h2 id="guide-title" data-ru="Как загрузить в Steam">Upload to Steam</h2><a class="upload" href="https://steamcommunity.com/sharedfiles/edititem/767/3/" target="_blank" rel="noopener noreferrer" data-ru="Открыть загрузку Steam ↗">Open Steam upload ↗</a></div>
+      <ol class="steps">
+        <li><strong data-ru="Выбери файл">Choose a file</strong><p data-ru="Войди в Steam через браузер. На странице загрузки выбери подготовленный файл и задай название.">Sign in to Steam in your browser. On the upload page, pick an exported file and give it a title.</p></li>
+        <li><strong data-ru="Запусти команду">Run the command</strong><p data-ru="Выбрав файл, нажми F12 и открой вкладку «Консоль». Вставь команду ниже и нажми Enter.">After choosing the file, press F12 and open the Console tab. Paste the command below and press Enter.</p></li>
+        <li><strong data-ru="Опубликуй">Publish the artwork</strong><p><span data-ru="Выбери видимость «Для всех», подтверди авторство своей работы и сохрани.">Set visibility to Public, confirm that you created the artwork and save.</span><span id="repeat-help" data-ru=" Повтори шаги отдельно для правой полосы."> Repeat these steps for the right strip.</span></p></li>
+        <li><strong data-ru="Собери витрину">Set up the showcase</strong><p><span data-ru="Открой «Редактировать профиль» → «Витрины».">Go to Edit Profile → Featured Showcase.</span> <span id="slot-help"></span></p></li>
+      </ol>
+      <div class="command"><pre><code id="steam-command">$J('#image_width').val('1000');$J('#image_height').val('1');</code></pre><button type="button" id="copy" data-ru="Копировать">Copy</button></div>
+      <p class="guide-note" data-ru="Команда задаёт размеры формы для длинных иллюстраций. В списке выбора такая работа может выглядеть тонкой полосой.">The command sets the form dimensions for long artwork. The artwork picker may show the result as a thin strip.</p>
+      <p class="guide-note"><span data-ru="Steam даёт первый слот витрины на 10-м уровне.">Steam unlocks its first showcase slot at Level 10.</span> <a href="https://help.steampowered.com/en/faqs/view/1F74-BE45-3AAC-1B47" target="_blank" rel="noopener noreferrer" data-ru="Уровни Steam">Steam levels</a> · <a href="https://steamcommunity.com/sharedfiles/filedetails?id=748624905" target="_blank" rel="noopener noreferrer" data-ru="Руководство сообщества">Community guide</a></p>
+    </section>
+  </main>
+  <input type="range" id="page-scroll" class="page-scroll" min="0" max="1000" value="0" aria-label="Page scroll" data-ru-aria="Прокрутка страницы" hidden>
+</body>
+</html>
