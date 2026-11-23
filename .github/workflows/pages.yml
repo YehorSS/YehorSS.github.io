@@ -26,6 +26,16 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run build
+      - name: Build and verify PoE2 Build
+        env:
+          RUSTUP_TOOLCHAIN: stable
+        run: |
+          rustup toolchain install stable --profile minimal --target wasm32-unknown-unknown
+          unzip -q poe2-build-source.zip -d "$RUNNER_TEMP/poe2-build"
+          node "$RUNNER_TEMP/poe2-build/scripts/build-web.mjs"
+          node "$RUNNER_TEMP/poe2-build/scripts/check-wasm.mjs"
+          mkdir -p dist/poe2-build
+          cp -a "$RUNNER_TEMP/poe2-build/dist/." dist/poe2-build/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
