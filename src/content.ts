@@ -30,6 +30,7 @@ export const FREELANCEHUNT_URL = 'https://freelancehunt.com/freelancer/kujira88.
 const GH = 'https://github.com/YehorSS';
 
 export const RECORDS: ArchiveRecord[] = [
+  { id: 'REC-017', status: 'INTACT', recovered: '2026-11-25', serial: '0047-YK-017-AS', seed: 'ascii-studio', repo: `${GH}/ascii-studio`, site: 'https://yehorss.github.io/ascii-studio/', deck: 'soft', stack: 'JavaScript · Canvas · Web Audio', chips: ['Photo & video', 'Color palettes', 'Local export', 'EN / RU'], title: 'ASCII Studio', key: 'asciistudio' },
   { id: 'REC-016', status: 'INTACT', recovered: '2026-11-25', serial: '0047-YK-016-SB', seed: 'system-bay', repo: `${GH}/system-bay`, deck: 'soft', stack: 'Rust · WinAPI · WebView2', chips: ['Hardware inventory', 'Windows Update', 'Power plans', 'Temp cleanup'], title: 'SYSTEM BAY', key: 'systembay' },
   { id: 'REC-015', status: 'INTACT', recovered: '2026-11-22', serial: '0047-YK-015-ND', seed: 'net-doctor', repo: `${GH}/net-doctor`, deck: 'soft', stack: 'Rust · WinAPI · WebView2', chips: ['Latency under load', 'Speed test', 'DNS', 'EN / RU'], title: 'NET DOCTOR', key: 'netdoctor' },
   { id: 'REC-014', status: 'INTACT', recovered: '2026-11-21', serial: '0047-YK-014-SC', seed: 'steam-showcase-cutter', repo: `${GH}/YehorSS.github.io/tree/main/steam-showcase-cutter`, site: 'https://yehorss.github.io/steam-showcase-cutter/', deck: 'web', stack: 'JavaScript · Canvas', chips: ['Steam Artwork', 'Local export', 'EN / RU'], title: 'Steam Showcase Cutter', key: 'steamcut' },
@@ -112,6 +113,8 @@ const en: Record<string, string> = {
   'rec.netdoctor.desc': 'Measure ping to your router and the internet, including during downloads and uploads. The app can try a DNS or Wi-Fi adjustment and compare the results before and after.',
   'rec.systembay.cat': 'Desktop · Windows hardware and maintenance',
   'rec.systembay.desc': 'Inspect your CPU, GPU and memory, download and install driver updates offered by Windows Update, and preview temporary files before deleting them.',
+  'rec.asciistudio.cat': 'Browser tool · ASCII art',
+  'rec.asciistudio.desc': 'Turn photos and videos into colored ASCII art. Adjust the detail, choose a palette, and save images or video with sound. Files are processed on your device.',
   'rec.nebbia.cat': 'Web · event poster',
   'rec.nebbia.desc': 'A poster site for a three-night electronic music festival in the old Bovisa gasworks, Milan. Pick the sets you want: the timetable shows clashes, walking time between stages and the minutes you will miss, and the plan can be sent as a link.',
   'rec.coperto.cat': 'Web · admin dashboard',
@@ -207,6 +210,8 @@ const uk: Record<string, string> = {
   'rec.netdoctor.desc': 'Вимірюй затримку до роутера й інтернету, зокрема під час завантаження та віддачі. Програма може скоригувати налаштування DNS або Wi-Fi й порівняти показники до та після змін.',
   'rec.systembay.cat': 'Програма · діагностика й обслуговування Windows',
   'rec.systembay.desc': 'Переглядай дані про процесор, відеокарту та пам’ять, завантажуй і встановлюй драйвери з Windows Update та перевіряй тимчасові файли перед видаленням.',
+  'rec.asciistudio.cat': 'Вебінструмент · ASCII-арт',
+  'rec.asciistudio.desc': 'Перетворюй фото й відео на кольоровий ASCII-арт. Налаштовуй деталізацію та палітру, зберігай зображення або відео зі звуком. Файли обробляються на твоєму пристрої.',
   'rec.nebbia.cat': 'Веб · афіша події',
   'rec.nebbia.desc': 'Сайт-афіша фестивалю електронної музики на три ночі в старому газовому заводі Бовізи, Мілан. Обираєш сети: розклад показує накладки, час пішки між сценами й хвилини, які пропустиш, а план можна надіслати посиланням.',
   'rec.coperto.cat': 'Веб · панель керування',
